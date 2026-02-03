@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Best Friend 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#000814;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+}
+
+.screen{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:6px solid #1e90ff;
+  position:relative;
+}
+
+.page{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  padding:50px;
+}
+
+.page.active{
+  display:flex;
+  animation:fade 1s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:scale(0.95)}
+  to{opacity:1; transform:scale(1)}
+}
+
+.cover{
+  font-family:'Pacifico',cursive;
+  font-size:64px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:52px;
+  margin-bottom:25px;
+}
+
+p{
+  font-size:22px;
+  max-width:900px;
+  line-height:1.7;
+}
+
+img{
+  max-width:70%;
+  max-height:60vh;
+  border:5px solid #1e90ff;
+  margin-top:25px;
+  border-radius:10px;
+}
+
+.controls{
+  position:absolute;
+  bottom:25px;
+}
+
+button{
+  padding:14px 28px;
+  margin:0 10px;
+  font-size:16px;
+  border:none;
+  background:#1e90ff;
+  color:white;
+  cursor:pointer;
+  border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="screen">
+
+  <!-- COVER -->
+  <div class="page active" id="page0">
+    <div class="cover">OPEN ME 💙</div>
+  </div>
+
+  <!-- PAGE 1 -->
+  <div class="page" id="page1">
+    <h1>Happy Birthday 🎉💙</h1>
+    <p>
+      On this beautiful day, the world became brighter because <b>you were born</b> ✨<br><br>
+      Without you, my life honestly feels incomplete.<br>
+      You are not just my best friend — you are my strength, my smile,
+      my safe place 💫
+    </p>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page" id="page2">
+    <h1>Us 🤝💙</h1>
+    <p>
+      From laughter to silence, from madness to memories —<br>
+      every moment with you is priceless 🫂
+    </p>
+    <img src="vishavraj.jpg" alt="Best Friends">
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="page" id="page3">
+    <h1>Someone Special 💖</h1>
+    <p>
+      She brings peace to your chaos and light to your smile 😊
+    </p>
+    <img src="joyna.jpg" alt="Joyna">
+    <p><b><br>Happiest Birthday jaan 💕<br>— from Joyna</b></p>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="page" id="page4">
+    <h1>Grateful 💙</h1>
+    <p>
+      Thank you for every late-night talk,<br>
+      every stupid laugh,<br>
+      every time you stood by me 🛡️
+    </p>
+  </div>
+
+  <!-- PAGE 5 -->
+  <div class="page" id="page5">
+    <h1>Forever ♾️</h1>
+    <p>
+      No matter where life takes us,<br>
+      remember this — <b>you’ll always have me</b> 💙<br><br>
+      Love you, my bestest friend 🫶
+    </p>
+  </div>
+
+</div>
+
+<div class="controls">
+  <button onclick="prev()">⬅ Back</button>
+  <button onclick="next()">Next ➡</button>
+</div>
+
+<script>
+let current = 0;
+const total = 5;
+const music = document.getElementById("bgm");
+
+document.addEventListener("click", () => {
+  music.play().catch(()=>{});
+}, { once:true });
+
+function show(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById("page"+n).classList.add('active');
+}
+
+function next(){
+  if(current < total){
+    current++;
+    show(current);
+  }
+}
+
+function prev(){
+  if(current > 0){
+    current--;
+    show(current);
+  }
+}
+</script>
+
+</body>
+</html>
+
